@@ -1,6 +1,8 @@
 namespace Kinde.ApiClient;
 
-internal static class KindeApiClientConstants
+public static class KindeApiClientConstants
 {
-    internal const string KindeHttpClientName = "KindeHttpClient";
+    public const string KindeHttpClientName = "KindeHttpClient";
+    public const string JwtBearerScheme = "Bearer";
+    public const string KindeAccessTokenCacheKey = "KindeAccessToken";
 }
