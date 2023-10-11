@@ -4,17 +4,28 @@
         <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Version>0.0.1-alpha</Version>
+        <Title>KindeManagementApi.Client</Title>
+        <Authors>matthewrosse</Authors>
+        <Description>A simple, convenient interface to Kinde Management API (machine to machine) with automatic access token refreshing.</Description>
+        <PackageProjectUrl>https://github.com/matthewrosse/kinde-management-api-dotnet-sdk</PackageProjectUrl>
+        <PackageLicenseUrl></PackageLicenseUrl>
+        <RepositoryUrl>https://github.com/matthewrosse/kinde-management-api-dotnet-sdk</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageTags>aspnetcore, kinde, authentication, authorization, jwt</PackageTags>
+        <PackageId>KindeManagementApi.Client</PackageId>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="IdentityModel.AspNetCore" Version="4.3.0" />
-      <PackageReference Include="Polly" Version="8.0.0" />
-      <PackageReference Include="Refit" Version="7.0.0" />
-      <PackageReference Include="Refit.HttpClientFactory" Version="7.0.0" />
+        <PackageReference Include="IdentityModel.AspNetCore" Version="4.3.0"/>
+        <PackageReference Include="Polly" Version="8.0.0"/>
+        <PackageReference Include="Refit" Version="7.0.0"/>
+        <PackageReference Include="Refit.HttpClientFactory" Version="7.0.0"/>
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Kinde.ApiClient.Contracts\Kinde.ApiClient.Contracts.csproj" />
+        <ProjectReference Include="..\Kinde.ApiClient.Contracts\Kinde.ApiClient.Contracts.csproj"/>
     </ItemGroup>
-
 </Project>
