@@ -2,18 +2,43 @@ using System.Text.Json.Serialization;
 
 namespace KindeManagementApiClient.Contracts.V1.Requests;
 
-public record CreateOrganizationRequest(
-    [property: JsonPropertyName("name")] string Name,
-    [property: JsonPropertyName("feature_flags")]
-    IDictionary<string, string>? FeatureFlags,
-    [property: JsonPropertyName("external_id")]
-    string? ExternalId,
-    [property: JsonPropertyName("background_color")]
-    string? BackgroundColor,
-    [property: JsonPropertyName("button_color")]
-    string? ButtonColor,
-    [property: JsonPropertyName("button_text_color")]
-    string? ButtonTextColor,
-    [property: JsonPropertyName("link_color")]
-    string? LinkColor
-);
+public record CreateOrganizationRequest
+{
+    [JsonIgnore] private IDictionary<string, object>? _featureFlags;
+
+    [JsonPropertyName("name")] public string? Name { get; init; }
+
+    [JsonPropertyName("feature_flags")] public IDictionary<string, object>? FeatureFlags => _featureFlags;
+
+    [JsonPropertyName("external_id")] public string? ExternalId { get; init; }
+
+    [JsonPropertyName("background_color")] public string? BackgroundColor { get; init; }
+
+    [JsonPropertyName("button_color")] public string? ButtonColor { get; init; }
+
+    [JsonPropertyName("button_text_color")]
+    public string? ButtonTextColor { get; init; }
+
+    [JsonPropertyName("link_color")] public string? LinkColor { get; init; }
+
+    private void EnsureFeatureFlagsInitialized()
+        => _featureFlags ??= new Dictionary<string, object>();
+
+    public void AddFeatureFlag(string propertyName, string value)
+    {
+        EnsureFeatureFlagsInitialized();
+        _featureFlags!.Add(new KeyValuePair<string, object>(propertyName, value));
+    }
+
+    public void AddFeatureFlag(string propertyName, bool value)
+    {
+        EnsureFeatureFlagsInitialized();
+        _featureFlags!.Add(new KeyValuePair<string, object>(propertyName, value));
+    }
+
+    public void AddFeatureFlag(string propertyName, int value)
+    {
+        EnsureFeatureFlagsInitialized();
+        _featureFlags!.Add(new KeyValuePair<string, object>(propertyName, value));
+    }
+}

@@ -2,16 +2,18 @@ using System.Text.Json.Serialization;
 
 namespace KindeManagementApiClient.Contracts.V1.Requests;
 
-public record UpdateOrganizationRequest(
-    [property: JsonPropertyName("name")] string Name,
-    [property: JsonPropertyName("external_id")]
-    string ExternalId,
-    [property: JsonPropertyName("background_color")]
-    string BackgroundColor,
-    [property: JsonPropertyName("button_color")]
-    string ButtonColor,
-    [property: JsonPropertyName("button_text_color")]
-    string ButtonTextColor,
-    [property: JsonPropertyName("text_color")]
-    string TextColor
-);
+public record UpdateOrganizationRequest
+{
+    [JsonPropertyName("name")] public string? Name { get; init; }
+
+    [JsonPropertyName("external_id")] public string? ExternalId { get; init; }
+
+    [JsonPropertyName("background_color")] public string? BackgroundColor { get; init; }
+
+    [JsonPropertyName("button_color")] public string? ButtonColor { get; init; }
+
+    [JsonPropertyName("button_text_color")]
+    public string? ButtonTextColor { get; init; }
+
+    [JsonPropertyName("text_color")] public string? TextColor { get; init; }
+}

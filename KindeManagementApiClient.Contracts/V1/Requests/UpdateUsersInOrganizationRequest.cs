@@ -4,19 +4,21 @@ using System.Text.Json.Serialization;
 namespace KindeManagementApiClient.Contracts.V1.Requests;
 
 public record UpdateUsersInOrganizationRequest(
-    [property: JsonPropertyName("users")] ICollection<UpdateUsersInOrganizationRequestInnerUser> Users
+    [property: JsonPropertyName("users")] ICollection<UpdateOrganizationUserModel> UpdateUserModels
 );
 
-public record UpdateUsersInOrganizationRequestInnerUser(
-    [property: JsonPropertyName("id")] string Id,
-    [property: JsonPropertyName("operation")]
-    UpdateUserInOrganizationOperation? Operation,
-    [property: JsonPropertyName("roles")] ICollection<string>? Roles,
-    [property: JsonPropertyName("permissions")]
-    ICollection<string>? Permissions
-);
+public record UpdateOrganizationUserModel
+{
+    [JsonPropertyName("id")] public required string Id { get; init; }
 
-public enum UpdateUserInOrganizationOperation
+    [JsonPropertyName("operation")] public UpdateOrganizationUserOperation? Operation { get; init; }
+
+    [JsonPropertyName("roles")] public ICollection<string>? Roles { get; init; }
+
+    [JsonPropertyName("permissions")] public ICollection<string>? Permissions { get; init; }
+}
+
+public enum UpdateOrganizationUserOperation
 {
     [EnumMember(Value = "delete")] Delete
 }

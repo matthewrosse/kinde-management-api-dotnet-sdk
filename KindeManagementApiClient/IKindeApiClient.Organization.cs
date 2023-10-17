@@ -43,7 +43,7 @@ public partial interface IKindeApiClient
     [Post("/api/v1/organizations/{org_code}/users")]
     Task<AddOrganizationUsersResponse> AddUsersToOrganization(
         [AliasAs("org_code")] string organizationCode,
-        [Body] AddUserToOrganizationRequest request
+        [Body] AddUsersToOrganizationRequest request
     );
 
     [Patch("/api/v1/organizations/{org_code}/users")]
@@ -62,7 +62,7 @@ public partial interface IKindeApiClient
     Task<SuccessResponse> AddRoleToUserInOrganization(
         [AliasAs("org_code")] string organizationCode,
         [AliasAs("user_id")] string userId,
-        [Body] AddRoleToUserInOrganizationRequest request
+        [Body] AddRoleToOrganizationUserRequest request
     );
 
     [Delete("/api/v1/organizations/{org_code}/users/{user_id}/roles/{role_id}")]
@@ -82,7 +82,7 @@ public partial interface IKindeApiClient
     Task<SuccessResponse> AddPermissionsToUserInOrganization(
         [AliasAs("org_code")] string organizationCode,
         [AliasAs("user_id")] string userId,
-        [Body] AddPermissionToUserInOrganizationRequest request
+        [Body] AddPermissionToOrganizationUserRequest request
     );
 
     [Delete("/api/v1/organizations/{org_code}/users/{user_id}/permissions/{permission_id}")]
