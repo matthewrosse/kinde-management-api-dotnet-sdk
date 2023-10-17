@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace KindeManagementApiClient.Contracts.V1.Requests.Organization;
 
 public record UpdateOrganizationUsersRequest(
-    [property: JsonIgnore] string OrganizationCode,
+    string OrganizationCode,
     [property: JsonPropertyName("users")] ICollection<UpdateOrganizationUserModel> UpdateUserModels
 );
 

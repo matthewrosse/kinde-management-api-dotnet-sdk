@@ -8,10 +8,10 @@ namespace KindeManagementApiClient;
 public partial interface IKindeApiClient
 {
     [Get(KindeApiRoutes.V1.Organizations.Get)]
-    Task<Organization> GetOrganization([AliasAs("code")] string code);
+    Task<Organization> GetOrganization(string code);
 
     [Get(KindeApiRoutes.V1.Organizations.GetMany)]
-    Task<GetOrganizationsResponse> GetOrganizations(GetOrganizationsRequest request);
+    Task<GetOrganizationsResponse> GetOrganizations(GetOrganizationsRequest? request = null);
 
     [Post(KindeApiRoutes.V1.Organizations.Create)]
     Task<CreateOrganizationResponse> CreateOrganization([Body] CreateOrganizationRequest request);
@@ -20,7 +20,7 @@ public partial interface IKindeApiClient
     Task<SuccessResponse> UpdateOrganization([Body] CreateOrganizationRequest request);
 
     [Delete(KindeApiRoutes.V1.Organizations.Delete)]
-    Task DeleteOrganization([AliasAs("org_code")] string organizationCode);
+    Task DeleteOrganization(string organizationCode);
 
     [Get(KindeApiRoutes.V1.Organizations.GetUsers)]
     Task<GetOrganizationUsersResponse> GetOrganizationUsers(GetOrganizationUsersRequest request);
@@ -66,12 +66,12 @@ public partial interface IKindeApiClient
 
     [Get(KindeApiRoutes.V1.Organizations.GetFeatureFlags)]
     Task<GetOrganizationFeatureFlagsResponse> GetOrganizationFeatureFlags(
-        [AliasAs("org_code")] string organizationCode
+        string organizationCode
     );
 
     [Delete(KindeApiRoutes.V1.Organizations.DeleteFeatureFlagsOverrides)]
     Task<SuccessResponse> DeleteOrganizationFeatureFlagsOverrides(
-        [AliasAs("org_code")] string organizationCode
+        string organizationCode
     );
 
     [Delete(KindeApiRoutes.V1.Organizations.DeleteFeatureFlagsOverride)]

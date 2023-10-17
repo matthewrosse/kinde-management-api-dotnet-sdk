@@ -1,4 +1,6 @@
 using System.Net.Mime;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using KindeManagementApiClient.Configurations;
 using Microsoft.Extensions.Options;
 using Microsoft.Net.Http.Headers;
@@ -21,7 +23,11 @@ public static class ServiceCollectionExtensions
 
     private static IServiceCollection AddKindeTypedHttpClient(this IServiceCollection services)
         => services
-            .AddRefitClient<IKindeApiClient>()
+            .AddRefitClient<IKindeApiClient>(new RefitSettings(new SystemTextJsonContentSerializer(
+                new JsonSerializerOptions
+                {
+                    DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault
+                })))
             .ConfigureHttpClient((provider, client) =>
             {
                 var kindeApiClientOptions = provider.GetRequiredService<IOptions<KindeApiClientOptions>>().Value;

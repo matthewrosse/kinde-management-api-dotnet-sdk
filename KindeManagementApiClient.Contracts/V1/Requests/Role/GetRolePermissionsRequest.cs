@@ -5,7 +5,7 @@ namespace KindeManagementApiClient.Contracts.V1.Requests.Role;
 
 public record GetRolePermissionsRequest
 {
-    [JsonIgnore] public required string RoleId { get; init; }
+    public required string RoleId { get; init; }
 
     [JsonPropertyName("sort")] public PermissionSortingMethod? SortingMethod { get; init; }
 

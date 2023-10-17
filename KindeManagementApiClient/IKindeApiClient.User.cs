@@ -11,11 +11,11 @@ public partial interface IKindeApiClient
     Task<User> GetUser(string id);
 
     [Post(KindeApiRoutes.V1.Users.RefreshClaims)]
-    Task<SuccessResponse> RefreshUserClaims([AliasAs("user_id")] string userId);
+    Task<SuccessResponse> RefreshUserClaims(string userId);
 
     [Get(KindeApiRoutes.V1.Users.GetMany)]
     Task<UsersResponse> GetUsers(
-        GetUsersRequest request
+        GetUsersRequest? request = null
     );
 
     [Post(KindeApiRoutes.V1.Users.Create)]

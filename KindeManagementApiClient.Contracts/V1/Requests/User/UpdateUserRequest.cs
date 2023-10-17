@@ -4,7 +4,7 @@ namespace KindeManagementApiClient.Contracts.V1.Requests.User;
 
 public record UpdateUserRequest
 {
-    [JsonIgnore] public required string UserId { get; init; }
+    public required string UserId { get; init; }
 
     [JsonPropertyName("given_name")] public string? GivenName { get; init; }
 

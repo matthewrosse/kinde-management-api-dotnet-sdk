@@ -8,7 +8,7 @@ internal static class KindeApiRoutes
         {
             internal const string Get = "/api/v1/user";
             internal const string GetMany = "/api/v1/users";
-            internal const string RefreshClaims = "/api/v1/users/{user_id}/refresh_claims";
+            internal const string RefreshClaims = "/api/v1/users/{userId}/refresh_claims";
             internal const string Create = "/api/v1/user";
             internal const string Update = "/api/v1/user?id={request.UserId}";
             internal const string Delete = "/api/v1/user";
@@ -16,7 +16,7 @@ internal static class KindeApiRoutes
 
         internal static class Subscribers
         {
-            internal const string Get = "/api/v1/subscribers/{subscriber_id}";
+            internal const string Get = "/api/v1/subscribers/{subscriberId}";
             internal const string GetMany = "/api/v1/subscribers";
             internal const string Create = "/api/v1/subscribers";
         }
@@ -32,7 +32,7 @@ internal static class KindeApiRoutes
 
             internal const string Create = "/api/v1/roles";
             internal const string Update = "/api/v1/role/{request.RoleId}";
-            internal const string Delete = "/api/v1/roles/{role_id}";
+            internal const string Delete = "/api/v1/roles/{roleId}";
         }
 
         internal static class Permissions
@@ -40,7 +40,7 @@ internal static class KindeApiRoutes
             internal const string GetMany = "/api/v1/permissions";
             internal const string Create = "/api/v1/permissions";
             internal const string Update = "/api/v1/permissions/{request.PermissionId}";
-            internal const string Delete = "/api/v1/permissions/{permission_id}";
+            internal const string Delete = "/api/v1/permissions/{permissionId}";
         }
 
         internal static class Organizations
@@ -48,36 +48,43 @@ internal static class KindeApiRoutes
             internal const string Get = "/api/v1/organization";
             internal const string GetMany = "/api/v1/organizations";
             internal const string Create = "/api/v1/organization";
-            internal const string Update = "/api/v1/organization/{request.OrganizationId}";
-            internal const string Delete = "/api/v1/organization/{org_code}";
-            internal const string GetUsers = "/api/v1/organizations/{request.OrganizationId}/users";
+            internal const string Update = "/api/v1/organization/{request.OrganizationCode}";
+            internal const string Delete = "/api/v1/organization/{organizationCode}";
+            internal const string GetUsers = "/api/v1/organizations/{request.OrganizationCode}/users";
             internal const string AddUsers = "/api/v1/organizations/{request.OrganizationCode}/users";
             internal const string UpdateUsers = "/api/v1/organizations/{request.OrganizationCode}/users";
-            internal const string GetUserRoles = "/api/v1/organizations/{org_code}/users/{user_id}/roles";
+
+            internal const string GetUserRoles =
+                "/api/v1/organizations/{request.OrganizationCode}/users/{request.UserId}/roles";
 
             internal const string AddRoleToUser =
                 "/api/v1/organizations/{request.OrganizationCode}/users/{request.UserId}/roles";
 
             internal const string DeleteRoleFromUser =
-                "/api/v1/organizations/{org_code}/users/{user_id}/roles/{role_id}";
+                "/api/v1/organizations/{request.OrganizationCode}/users/{request.UserId}/roles/{request.RoleId}";
 
-            internal const string GetUserPermissions = "/api/v1/organizations/{org_code}/users/{user_id}/permissions";
+            internal const string GetUserPermissions =
+                "/api/v1/organizations/{request.OrganizationCode}/users/{request.UserId}/permissions";
 
             internal const string AddPermissionsToUser =
                 "/api/v1/organizations/{request.OrganizationCode}/users/{request.UserId}/permissions";
 
             internal const string DeletePermissionFromUser =
-                "/api/v1/organizations/{org_code}/users/{user_id}/permissions/{permission_id}";
+                "/api/v1/organizations/{request.OrganizationCode}/users/{request.UserId}/permissions/{request.PermissionId}";
 
-            internal const string DeleteUserFromOrganization = "/api/v1/organizations/{org_code}/users/{user_id}";
-            internal const string GetFeatureFlags = "/api/v1/organizations/{org_code}/feature_flags";
-            internal const string DeleteFeatureFlagsOverrides = "/api/v1/organizations/{org_code}/feature_flags";
+            internal const string DeleteUserFromOrganization =
+                "/api/v1/organizations/{request.OrganizationCode}/users/{request.UserId}";
+
+            internal const string GetFeatureFlags = "/api/v1/organizations/{organizationCode}/feature_flags";
+
+            internal const string DeleteFeatureFlagsOverrides =
+                "/api/v1/organizations/{organizationCode}/feature_flags";
 
             internal const string DeleteFeatureFlagsOverride =
-                "/api/v1/organizations/{org_code}/feature_flags/{feature_flag_key}";
+                "/api/v1/organizations/{request.OrganizationCode}/feature_flags/{request.FeatureFlagKey}";
 
             internal const string UpdateFeatureFlagsOverride =
-                "/api/v1/organizations/{org_code}/feature_flags/{feature_flag_key}";
+                "/api/v1/organizations/{request.OrganizationCode}/feature_flags/{request.FeatureFlagKey}";
         }
     }
 }

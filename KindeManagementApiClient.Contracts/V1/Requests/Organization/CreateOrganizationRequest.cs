@@ -4,9 +4,9 @@ namespace KindeManagementApiClient.Contracts.V1.Requests.Organization;
 
 public record CreateOrganizationRequest
 {
-    [JsonIgnore] public required string OrganizationId { get; init; }
+    public required string OrganizationCode { get; init; }
 
-    [JsonIgnore] private IDictionary<string, object>? _featureFlags;
+    private IDictionary<string, object>? _featureFlags;
 
     [JsonPropertyName("name")] public string? Name { get; init; }
 

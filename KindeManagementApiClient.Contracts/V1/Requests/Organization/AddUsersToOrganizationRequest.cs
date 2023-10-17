@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace KindeManagementApiClient.Contracts.V1.Requests.Organization;
 
 public record AddUsersToOrganizationRequest(
-    [property: JsonIgnore] string OrganizationCode,
+    string OrganizationCode,
     [property: JsonPropertyName("users")] ICollection<NewOrganizationUserModel> NewOrganizationUserModels
 );
 

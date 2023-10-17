@@ -6,11 +6,11 @@ namespace KindeManagementApiClient;
 
 public partial interface IKindeApiClient
 {
-    [Get("/api/v1/subscribers/{subscriber_id}")]
-    Task<GetSubscriberResponse> GetSubscriber([AliasAs("subscriber_id")] string subscriberId);
+    [Get(KindeApiRoutes.V1.Subscribers.Get)]
+    Task<GetSubscriberResponse> GetSubscriber(string subscriberId);
 
     [Get(KindeApiRoutes.V1.Subscribers.GetMany)]
-    Task<GetSubscribersResponse> GetSubscribers(GetSubscribersRequest request);
+    Task<GetSubscribersResponse> GetSubscribers(GetSubscribersRequest? request = null);
 
     [Post(KindeApiRoutes.V1.Subscribers.Create)]
     Task<CreateSubscriberSuccessResponse> CreateSubscriber([Body] CreateSubscriberRequest request);

@@ -6,7 +6,7 @@ namespace KindeManagementApiClient.Contracts.V1.Requests.Organization;
 
 public record GetOrganizationUsersRequest
 {
-    [JsonIgnore] public required string OrganizationId { get; init; }
+    public required string OrganizationCode { get; init; }
 
     [JsonPropertyName("sort")] public UserSortingMethod? SortingMethod { get; init; }
 

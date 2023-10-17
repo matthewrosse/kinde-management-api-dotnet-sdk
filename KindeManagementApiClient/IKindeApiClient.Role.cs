@@ -7,7 +7,7 @@ namespace KindeManagementApiClient;
 public partial interface IKindeApiClient
 {
     [Get(KindeApiRoutes.V1.Roles.GetMany)]
-    Task<GetRolesResponse> GetRoles(GetRolesRequest request);
+    Task<GetRolesResponse> GetRoles(GetRolesRequest? request = null);
 
     [Get(KindeApiRoutes.V1.Roles.GetPermissions)]
     Task<GetRolesPermissionResponse> GetRolePermissions(GetRolePermissionsRequest request);
@@ -25,5 +25,5 @@ public partial interface IKindeApiClient
     Task<SuccessResponse> UpdateRole([Body] UpdateRoleRequest request);
 
     [Delete(KindeApiRoutes.V1.Roles.Delete)]
-    Task<SuccessResponse> DeleteRole([AliasAs("role_id")] string roleId);
+    Task<SuccessResponse> DeleteRole(string roleId);
 }

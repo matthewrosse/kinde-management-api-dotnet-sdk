@@ -10,7 +10,7 @@ namespace KindeManagementApiClient;
 public partial interface IKindeApiClient
 {
     [Get(KindeApiRoutes.V1.Permissions.GetMany)]
-    Task<GetPermissionsResponse> GetPermissions(GetPermissionsRequest request);
+    Task<GetPermissionsResponse> GetPermissions(GetPermissionsRequest? request = null);
 
     [Post(KindeApiRoutes.V1.Permissions.Create)]
     Task<SuccessResponse> CreatePermission([Body] CreatePermissionRequest request);
@@ -19,5 +19,5 @@ public partial interface IKindeApiClient
     Task<SuccessResponse> UpdatePermission([Body] UpdatePermissionRequest request);
 
     [Delete(KindeApiRoutes.V1.Permissions.Delete)]
-    Task<SuccessResponse> DeletePermission([AliasAs("permission_id")] string permissionId);
+    Task<SuccessResponse> DeletePermission(string permissionId);
 }
