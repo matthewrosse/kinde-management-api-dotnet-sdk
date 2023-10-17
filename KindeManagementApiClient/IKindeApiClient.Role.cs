@@ -1,50 +1,29 @@
-using KindeManagementApiClient.Contracts.V1.Requests;
+using KindeManagementApiClient.Contracts.V1.Requests.Role;
 using KindeManagementApiClient.Contracts.V1.Responses;
-using KindeManagementApiClient.QueryParams;
 using Refit;
 
 namespace KindeManagementApiClient;
 
 public partial interface IKindeApiClient
 {
-    [Get("/api/v1/roles")]
-    Task<GetRolesResponse> GetRoles(
-        [AliasAs("sort")] RoleSortingMethod? sortingMethod = null,
-        [AliasAs("page_size")] int? pageSize = null,
-        [AliasAs("next_token")] string? nextToken = null
-    );
+    [Get(KindeApiRoutes.V1.Roles.GetMany)]
+    Task<GetRolesResponse> GetRoles(GetRolesRequest request);
 
-    [Get("/api/v1/roles/{role_id}/permissions")]
-    Task<GetRolesPermissionResponse> GetRolePermissions(
-        [AliasAs("role_id")] string roleId,
-        [AliasAs("sort")] PermissionSortingMethod? sortingMethod = null,
-        [AliasAs("page_size")] int? pageSize = null,
-        [AliasAs("next_token")] string? nextToken = null
-    );
+    [Get(KindeApiRoutes.V1.Roles.GetPermissions)]
+    Task<GetRolesPermissionResponse> GetRolePermissions(GetRolePermissionsRequest request);
 
-    [Patch("/api/v1/roles/{role_id}/permissions")]
-    Task<UpdateRolePermissionsResponse> UpdateRolePermissions(
-        [AliasAs("role_id")] string roleId,
-        [Body] UpdateRolePermissionsRequest request
-    );
+    [Patch(KindeApiRoutes.V1.Roles.UpdatePermissions)]
+    Task<UpdateRolePermissionsResponse> UpdateRolePermissions([Body] UpdateRolePermissionsRequest request);
 
-    [Delete("/api/v1/roles/{role_id]/permissions/{permission_id}")]
-    Task<SuccessResponse> DeleteRolePermission(
-        [AliasAs("role_id")] string roleId,
-        [AliasAs("permission_id")] string permissionId
-    );
+    [Delete(KindeApiRoutes.V1.Roles.DeletePermission)]
+    Task<SuccessResponse> DeleteRolePermission(DeleteRolePermissionRequest request);
 
-    [Post("/api/v1/roles")]
+    [Post(KindeApiRoutes.V1.Roles.Create)]
     Task<SuccessResponse> CreateRole([Body] CreateRoleRequest request);
 
-    [Post("/api/v1/role/{role_id}")]
-    Task<SuccessResponse> UpdateRole(
-        [AliasAs("role_id")] string roleId,
-        [Body] UpdateRoleRequest request
-    );
+    [Post(KindeApiRoutes.V1.Roles.Update)]
+    Task<SuccessResponse> UpdateRole([Body] UpdateRoleRequest request);
 
-    [Delete("/api/v1/roles/{role_id}")]
-    Task<SuccessResponse> DeleteRole(
-        [AliasAs("role_id")] string roleId
-    );
+    [Delete(KindeApiRoutes.V1.Roles.Delete)]
+    Task<SuccessResponse> DeleteRole([AliasAs("role_id")] string roleId);
 }

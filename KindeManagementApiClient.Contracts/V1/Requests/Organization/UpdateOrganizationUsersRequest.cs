@@ -1,9 +1,10 @@
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
-namespace KindeManagementApiClient.Contracts.V1.Requests;
+namespace KindeManagementApiClient.Contracts.V1.Requests.Organization;
 
-public record UpdateUsersInOrganizationRequest(
+public record UpdateOrganizationUsersRequest(
+    [property: JsonIgnore] string OrganizationCode,
     [property: JsonPropertyName("users")] ICollection<UpdateOrganizationUserModel> UpdateUserModels
 );
 

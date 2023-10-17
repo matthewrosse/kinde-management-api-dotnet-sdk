@@ -1,8 +1,8 @@
 using System.Runtime.Serialization;
 
-namespace KindeManagementApiClient.QueryParams;
+namespace KindeManagementApiClient.Contracts.V1.QueryParams;
 
-public enum SubscriberSortingMethod
+public enum OrganizationSortingMethod
 {
     [EnumMember(Value = "name_asc")] NameAscending,
     [EnumMember(Value = "name_desc")] NameDescending,

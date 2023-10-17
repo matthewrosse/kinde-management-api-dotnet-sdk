@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace KindeManagementApiClient.Contracts.V1.Requests;
+namespace KindeManagementApiClient.Contracts.V1.Requests.Subscriber;
 
 public record CreateSubscriberRequest
 {

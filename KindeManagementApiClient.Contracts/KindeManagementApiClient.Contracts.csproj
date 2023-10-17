@@ -5,7 +5,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <Version>0.0.1-alpha</Version>
+        <Version>0.0.2-alpha</Version>
         <Title>KindeManagementApiClient.Contracts</Title>
         <Authors>matthewrosse</Authors>
         <Description>Api contracts for KindeManagementApiClient</Description>

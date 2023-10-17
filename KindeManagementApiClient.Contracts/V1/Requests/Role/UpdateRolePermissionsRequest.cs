@@ -1,9 +1,10 @@
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
-namespace KindeManagementApiClient.Contracts.V1.Requests;
+namespace KindeManagementApiClient.Contracts.V1.Requests.Role;
 
 public record UpdateRolePermissionsRequest(
+    string RoleId,
     [property: JsonPropertyName("permissions")]
     ICollection<UpdateRolePermissionModel> UpdateRolePermissionModels
 );

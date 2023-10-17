@@ -1,6 +1,6 @@
 using System.Runtime.Serialization;
 
-namespace KindeManagementApiClient.QueryParams;
+namespace KindeManagementApiClient.Contracts.V1.QueryParams;
 
 public enum PermissionSortingMethod
 {

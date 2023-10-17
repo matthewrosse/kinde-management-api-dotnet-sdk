@@ -5,7 +5,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <Version>0.0.1-alpha</Version>
+        <Version>0.0.2-alpha</Version>
         <Title>KindeManagementApiClient</Title>
         <Authors>matthewrosse</Authors>
         <Description>A simple, convenient interface to Kinde Management API (machine to machine) with automatic access token refreshing.</Description>

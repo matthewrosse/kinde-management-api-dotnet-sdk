@@ -1,9 +1,11 @@
 using System.Text.Json.Serialization;
 
-namespace KindeManagementApiClient.Contracts.V1.Requests;
+namespace KindeManagementApiClient.Contracts.V1.Requests.Organization;
 
 public record CreateOrganizationRequest
 {
+    [JsonIgnore] public required string OrganizationId { get; init; }
+
     [JsonIgnore] private IDictionary<string, object>? _featureFlags;
 
     [JsonPropertyName("name")] public string? Name { get; init; }
