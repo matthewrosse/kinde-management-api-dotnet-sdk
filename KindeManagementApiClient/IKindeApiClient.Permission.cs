@@ -1,6 +1,4 @@
-using KindeManagementApiClient.Contracts.V1.Models;
-using KindeManagementApiClient.Contracts.V1.QueryParams;
-using KindeManagementApiClient.Contracts.V1.Requests;
+using KindeManagementApiClient.Constants;
 using KindeManagementApiClient.Contracts.V1.Requests.Permission;
 using KindeManagementApiClient.Contracts.V1.Responses;
 using Refit;

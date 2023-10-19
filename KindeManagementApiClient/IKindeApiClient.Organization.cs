@@ -1,3 +1,4 @@
+using KindeManagementApiClient.Constants;
 using KindeManagementApiClient.Contracts.V1.Models;
 using KindeManagementApiClient.Contracts.V1.Requests.Organization;
 using KindeManagementApiClient.Contracts.V1.Responses;
@@ -17,7 +18,7 @@ public partial interface IKindeApiClient
     Task<CreateOrganizationResponse> CreateOrganization([Body] CreateOrganizationRequest request);
 
     [Patch(KindeApiRoutes.V1.Organizations.Update)]
-    Task<SuccessResponse> UpdateOrganization([Body] CreateOrganizationRequest request);
+    Task<SuccessResponse> UpdateOrganization([Body] UpdateOrganizationRequest request);
 
     [Delete(KindeApiRoutes.V1.Organizations.Delete)]
     Task DeleteOrganization(string organizationCode);
@@ -31,7 +32,7 @@ public partial interface IKindeApiClient
     );
 
     [Patch(KindeApiRoutes.V1.Organizations.UpdateUsers)]
-    Task<UpdateOrganizationUsersResponse> UpdateUsersInOrganization(
+    Task<UpdateOrganizationUsersResponse> UpdateOrganizationUsers(
         [Body] UpdateOrganizationUsersRequest request
     );
 
@@ -41,7 +42,7 @@ public partial interface IKindeApiClient
     );
 
     [Post(KindeApiRoutes.V1.Organizations.AddRoleToUser)]
-    Task<SuccessResponse> AddRoleToUserInOrganization([Body] AddRoleToOrganizationUserRequest request);
+    Task<SuccessResponse> AddRoleToOrganizationUser([Body] AddRoleToOrganizationUserRequest request);
 
     [Delete(KindeApiRoutes.V1.Organizations.DeleteRoleFromUser)]
     Task<SuccessResponse> DeleteRoleFromOrganizationUser(DeleteRoleFromOrganizationUserRequest request);
@@ -51,7 +52,7 @@ public partial interface IKindeApiClient
         GetOrganizationUserPermissionsRequest request
     );
 
-    [Post(KindeApiRoutes.V1.Organizations.AddPermissionsToUser)]
+    [Post(KindeApiRoutes.V1.Organizations.AddPermissionToUser)]
     Task<SuccessResponse> AddPermissionsToOrganizationUser(
         [Body] AddPermissionToOrganizationUserRequest request
     );

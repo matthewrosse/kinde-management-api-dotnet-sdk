@@ -1,3 +1,4 @@
+using KindeManagementApiClient.Constants;
 using KindeManagementApiClient.Contracts.V1.Models;
 using KindeManagementApiClient.Contracts.V1.Requests.User;
 using KindeManagementApiClient.Contracts.V1.Responses;
@@ -15,8 +16,11 @@ public partial interface IKindeApiClient
 
     [Get(KindeApiRoutes.V1.Users.GetMany)]
     Task<UsersResponse> GetUsers(
-        GetUsersRequest? request = null
+        [Query] GetUsersRequest request
     );
+
+    [Get(KindeApiRoutes.V1.Users.GetMany)]
+    Task<UsersResponse> GetUsers();
 
     [Post(KindeApiRoutes.V1.Users.Create)]
     Task<CreateUserResponse> CreateUser([Body] CreateUserRequest request);
