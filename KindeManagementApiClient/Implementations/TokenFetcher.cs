@@ -45,9 +45,10 @@ internal sealed class TokenFetcher : ITokenFetcher
         }
         catch (HttpRequestException exception)
         {
-            _logger.LogCritical(exception,
+            _logger.LogCritical(
                 "The token store was unable to retrieve an access token! The content of the failed request: {@RequestContent}",
-                responseContent);
+                responseContent
+                );
             throw;
         }
 

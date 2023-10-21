@@ -8,7 +8,7 @@ public record GetOrganizationUsersResponse(
     [property: JsonPropertyName("message")]
     string Message,
     [property: JsonPropertyName("organization_users")]
-    IReadOnlyCollection<OrganizationUser> OrganizationUsers,
+    IReadOnlyCollection<OrganizationUser>? OrganizationUsers,
     [property: JsonPropertyName("next_token")]
-    string NextToken
+    string? NextToken
 );

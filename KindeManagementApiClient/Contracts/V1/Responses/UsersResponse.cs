@@ -6,9 +6,9 @@ public record UsersResponse(
     [property: JsonPropertyName("code")] string Code,
     [property: JsonPropertyName("message")]
     string Message,
-    [property: JsonPropertyName("users")] IReadOnlyCollection<UsersResponseInnerUser> Users,
+    [property: JsonPropertyName("users")] IReadOnlyCollection<UsersResponseInnerUser>? Users,
     [property: JsonPropertyName("next_token")]
-    string NextToken
+    string? NextToken
 );
 
 public record UsersResponseInnerUser(

@@ -2,18 +2,20 @@ using System.Text.Json.Serialization;
 
 namespace KindeManagementApiClient.Contracts.V1.Responses;
 
-public record GetApplicationsResponse(
+public record GetRolePermissionsResponse(
     [property: JsonPropertyName("code")] string Code,
     [property: JsonPropertyName("message")]
     string Message,
-    [property: JsonPropertyName("applications")]
-    IReadOnlyCollection<GetApplicationsResponseInnerApplication>? Applications,
     [property: JsonPropertyName("next_token")]
-    string? NextToken
+    string? NextToken,
+    [property: JsonPropertyName("permissions")]
+    IReadOnlyCollection<GetRolePermissionsResponseInnerPermission> Permissions
 );
 
-public record GetApplicationsResponseInnerApplication(
+public record GetRolePermissionsResponseInnerPermission(
     [property: JsonPropertyName("id")] string Id,
+    [property: JsonPropertyName("key")] string Key,
     [property: JsonPropertyName("name")] string Name,
-    [property: JsonPropertyName("type")] string Type
+    [property: JsonPropertyName("description")]
+    string Description
 );

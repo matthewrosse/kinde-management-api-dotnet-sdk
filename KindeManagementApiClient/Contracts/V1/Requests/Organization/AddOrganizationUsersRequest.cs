@@ -2,7 +2,7 @@ using System.Text.Json.Serialization;
 
 namespace KindeManagementApiClient.Contracts.V1.Requests.Organization;
 
-public record AddUsersToOrganizationRequest(
+public record AddOrganizationUsersRequest(
     string OrganizationCode,
     [property: JsonPropertyName("users")] ICollection<NewOrganizationUserModel> NewOrganizationUserModels
 );
@@ -21,7 +21,7 @@ public record NewOrganizationUserModel
 
     [JsonPropertyName("id")] public required string Id { get; init; }
 
-    [JsonPropertyName("permissions")] public ICollection<string>? Permissions { get; init; }
+    [JsonPropertyName("permissions")] public ICollection<string> Permissions { get; init; } = new List<string>();
 
-    [JsonPropertyName("roles")] public ICollection<string>? Roles { get; init; }
+    [JsonPropertyName("roles")] public ICollection<string> Roles { get; init; } = new List<string>();
 }

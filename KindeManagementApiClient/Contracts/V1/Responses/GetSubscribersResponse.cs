@@ -8,7 +8,7 @@ public record GetSubscribersResponse(
     [property: JsonPropertyName("message")]
     string Message,
     [property: JsonPropertyName("subscribers")]
-    IReadOnlyCollection<SubscribersSubscriber> Subscribers,
+    IReadOnlyCollection<SubscribersSubscriber>? Subscribers,
     [property: JsonPropertyName("next_token")]
-    string NextToken
+    string? NextToken
 );

@@ -6,9 +6,9 @@ public record UpdateOrganizationUsersResponse(
     [property: JsonPropertyName("message")]
     string Message,
     [property: JsonPropertyName("users_added")]
-    IReadOnlyCollection<string> UsersAdded,
+    IReadOnlyCollection<string>? UsersAdded,
     [property: JsonPropertyName("users_updated")]
-    IReadOnlyCollection<string> UsersUpdated,
+    IReadOnlyCollection<string>? UsersUpdated,
     [property: JsonPropertyName("users_removed")]
-    IReadOnlyCollection<string> UsersRemoved
+    IReadOnlyCollection<string>? UsersRemoved
 );

@@ -1,6 +1,6 @@
 namespace KindeManagementApiClient.Contracts.V1.Requests.Organization;
 
-public record DeleteRoleFromOrganizationUserRequest
+public record DeleteOrganizationUserRoleRequest
 {
     public required string OrganizationCode { get; init; }
 

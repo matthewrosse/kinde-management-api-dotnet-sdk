@@ -1,3 +1,4 @@
+using System.Net;
 using System.Net.Mime;
 using KindeManagementApiClient.Abstractions;
 using KindeManagementApiClient.Configuration;
@@ -7,12 +8,19 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Microsoft.Net.Http.Headers;
 using Polly;
+using Polly.Extensions.Http;
+using Polly.Retry;
 using Refit;
 
 namespace KindeManagementApiClient.Extensions;
 
 public static class ServiceCollectionExtensions
 {
+    private static readonly AsyncRetryPolicy<HttpResponseMessage> KindeApiClientPolicy = HttpPolicyExtensions
+        .HandleTransientHttpError()
+        .OrResult(response => response.StatusCode == HttpStatusCode.TooManyRequests)
+        .WaitAndRetryAsync(3, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)));
+
     public static IServiceCollection AddKindeApiClient(
         this IServiceCollection services
     )
@@ -27,6 +35,7 @@ public static class ServiceCollectionExtensions
         this IServiceCollection services
     )
         => services
+            .AddHttpClient()
             .AddKindeApiClientOptions()
             .AddRefitClient<IKindeApiClient>()
             .ConfigureHttpClient((provider, client) =>
@@ -36,9 +45,7 @@ public static class ServiceCollectionExtensions
                 client.BaseAddress = new Uri(kindeApiClientOptions.Domain);
             })
             .AddHttpMessageHandler<AuthorizationHeaderDelegatingHandler>()
-            .AddTransientHttpErrorPolicy(builder =>
-                builder.WaitAndRetryAsync(3, i => i * TimeSpan.FromMilliseconds(500))
-            )
+            .AddPolicyHandler(KindeApiClientPolicy)
             .Services
             .AddHttpClient(KindeApiClientConstants.HttpClientName)
             .ConfigureHttpClient((provider, client) =>

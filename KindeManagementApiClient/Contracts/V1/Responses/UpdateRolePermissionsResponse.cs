@@ -7,7 +7,7 @@ public record UpdateRolePermissionsResponse(
     [property: JsonPropertyName("message")]
     string Message,
     [property: JsonPropertyName("permissions_added")]
-    IReadOnlyCollection<string> PermissionsAdded,
+    IReadOnlyCollection<string>? PermissionsAdded,
     [property: JsonPropertyName("permissions_removed")]
-    IReadOnlyCollection<string> PermissionsRemoved
+    IReadOnlyCollection<string>? PermissionsRemoved
 );

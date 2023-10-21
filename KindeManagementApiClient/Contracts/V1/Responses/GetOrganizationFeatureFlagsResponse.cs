@@ -7,7 +7,7 @@ public record GetOrganizationFeatureFlagsResponse(
     [property: JsonPropertyName("message")]
     string Message,
     [property: JsonPropertyName("feature_flags")]
-    IReadOnlyCollection<GetOrganizationFeatureFlagsResponseInnerFeatureFlag> FeatureFlags
+    IReadOnlyCollection<GetOrganizationFeatureFlagsResponseInnerFeatureFlag>? FeatureFlags
 );
 
 public record GetOrganizationFeatureFlagsResponseInnerFeatureFlag(

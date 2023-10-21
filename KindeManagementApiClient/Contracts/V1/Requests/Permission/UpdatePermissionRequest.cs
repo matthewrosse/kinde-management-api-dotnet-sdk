@@ -6,15 +6,12 @@ public record UpdatePermissionRequest
 {
     public required string PermissionId { get; init; }
 
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     [JsonPropertyName("name")]
-    public string? Name { get; init; }
+    public required string Name { get; init; }
 
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     [JsonPropertyName("description")]
-    public string? Description { get; init; }
+    public required string Description { get; init; }
 
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     [JsonPropertyName("key")]
-    public string? Key { get; init; }
+    public required string Key { get; init; }
 }

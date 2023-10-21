@@ -7,9 +7,9 @@ public record GetPermissionsResponse(
     [property: JsonPropertyName("message")]
     string Message,
     [property: JsonPropertyName("next_token")]
-    string NextToken,
+    string? NextToken,
     [property: JsonPropertyName("permissions")]
-    IReadOnlyCollection<GetPermissionsResponseInnerPermission> Permissions
+    IReadOnlyCollection<GetPermissionsResponseInnerPermission>? Permissions
 );
 
 public record GetPermissionsResponseInnerPermission(

@@ -7,9 +7,9 @@ public record GetEnvironmentFeatureFlagsResponse(
     [property: JsonPropertyName("message")]
     string Message,
     [property: JsonPropertyName("feature_flags")]
-    IReadOnlyCollection<GetEnvironmentFeatureFlagsResponseInnerFeatureFlag> FeatureFlags,
+    IReadOnlyCollection<GetEnvironmentFeatureFlagsResponseInnerFeatureFlag>? FeatureFlags,
     [property: JsonPropertyName("next_token")]
-    string NextToken
+    string? NextToken
 );
 
 public record GetEnvironmentFeatureFlagsResponseInnerFeatureFlag(

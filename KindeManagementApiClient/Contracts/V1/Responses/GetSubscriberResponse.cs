@@ -7,6 +7,6 @@ public record GetSubscriberResponse(
     [property: JsonPropertyName("code")] string Code,
     [property: JsonPropertyName("message")]
     string Message,
-    [property: JsonPropertyName("subscribers")]
-    IReadOnlyCollection<Subscriber> Subscribers
+    [property: JsonPropertyName("subscriber")]
+    Subscriber Subscriber
 );

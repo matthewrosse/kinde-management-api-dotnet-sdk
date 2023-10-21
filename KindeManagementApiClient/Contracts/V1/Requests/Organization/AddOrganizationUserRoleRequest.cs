@@ -2,7 +2,7 @@ using System.Text.Json.Serialization;
 
 namespace KindeManagementApiClient.Contracts.V1.Requests.Organization;
 
-public record AddRoleToOrganizationUserRequest(
+public record AddOrganizationUserRoleRequest(
     string OrganizationCode,
     string UserId,
     [property: JsonPropertyName("role_id")]

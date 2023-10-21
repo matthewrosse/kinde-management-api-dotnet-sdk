@@ -8,5 +8,5 @@ public record GetOrganizationUserPermissionsResponse(
     [property: JsonPropertyName("message")]
     string Message,
     [property: JsonPropertyName("permissions")]
-    IReadOnlyCollection<OrganizationUserPermission> Permissions
+    IReadOnlyCollection<OrganizationUserPermission>? Permissions
 );

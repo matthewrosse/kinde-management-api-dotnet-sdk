@@ -7,7 +7,7 @@ public record GetOrganizationUserRolesResponse(
     [property: JsonPropertyName("code")] string Code,
     [property: JsonPropertyName("message")]
     string Message,
-    [property: JsonPropertyName("roles")] IReadOnlyCollection<OrganizationUserRole> Roles,
+    [property: JsonPropertyName("roles")] IReadOnlyCollection<OrganizationUserRole>? Roles,
     [property: JsonPropertyName("next_token")]
-    string NextToken
+    string? NextToken
 );

@@ -8,6 +8,6 @@ public record CreateSubscriberSuccessResponse(
 );
 
 public record CreateSubscriberSuccessResponseInnerSubscriber(
-    [property: JsonPropertyName("subscriber_id")]
-    string SubscriberId
+    [property: JsonPropertyName("id")]
+    string Id
 );

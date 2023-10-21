@@ -8,23 +8,26 @@ namespace KindeManagementApiClient;
 public partial interface IKindeApiClient
 {
     [Get(KindeApiRoutes.V1.Roles.GetMany)]
-    Task<GetRolesResponse> GetRoles(GetRolesRequest? request = null);
+    Task<ApiResponse<GetRolesResponse>> GetRoles();
+    
+    [Get(KindeApiRoutes.V1.Roles.GetMany)]
+    Task<ApiResponse<GetRolesResponse>> GetRoles(GetRolesRequest request);
 
     [Get(KindeApiRoutes.V1.Roles.GetPermissions)]
-    Task<GetRolesPermissionResponse> GetRolePermissions(GetRolePermissionsRequest request);
+    Task<ApiResponse<GetRolePermissionsResponse>> GetRolePermissions(GetRolePermissionsRequest request);
 
     [Patch(KindeApiRoutes.V1.Roles.UpdatePermissions)]
-    Task<UpdateRolePermissionsResponse> UpdateRolePermissions([Body] UpdateRolePermissionsRequest request);
+    Task<ApiResponse<UpdateRolePermissionsResponse>> UpdateRolePermissions([Body] UpdateRolePermissionsRequest request);
 
     [Delete(KindeApiRoutes.V1.Roles.DeletePermission)]
-    Task<SuccessResponse> DeleteRolePermission(DeleteRolePermissionRequest request);
+    Task<ApiResponse<SuccessResponse>> DeleteRolePermission(DeleteRolePermissionRequest request);
 
     [Post(KindeApiRoutes.V1.Roles.Create)]
-    Task<SuccessResponse> CreateRole([Body] CreateRoleRequest request);
+    Task<ApiResponse<SuccessResponse>> CreateRole([Body] CreateRoleRequest request);
 
     [Post(KindeApiRoutes.V1.Roles.Update)]
-    Task<SuccessResponse> UpdateRole([Body] UpdateRoleRequest request);
+    Task<ApiResponse<SuccessResponse>> UpdateRole([Body] UpdateRoleRequest request);
 
     [Delete(KindeApiRoutes.V1.Roles.Delete)]
-    Task<SuccessResponse> DeleteRole(string roleId);
+    Task<ApiResponse<SuccessResponse>> DeleteRole(string roleId);
 }
