@@ -12,7 +12,7 @@ internal static class KindeApiRoutes
             internal const string GetMany = "/api/v1/users";
             internal const string RefreshClaims = "/api/v1/users/{userId}/refresh_claims";
             internal const string Create = "/api/v1/user";
-            internal const string Update = "/api/v1/user?id={request.UserId}";
+            internal const string Update = "/api/v1/user";
             internal const string Delete = "/api/v1/user";
         }
 

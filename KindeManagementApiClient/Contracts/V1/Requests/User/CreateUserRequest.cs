@@ -4,9 +4,9 @@ namespace KindeManagementApiClient.Contracts.V1.Requests.User;
 
 public record CreateUserRequest
 {
-    [JsonPropertyName("profile")] public UserProfileModel? Profile { get; init; }
+    [JsonPropertyName("profile")] public required UserProfileModel Profile { get; init; }
 
-    [JsonPropertyName("identities")] public ICollection<UserIdentityModel>? Identities { get; init; }
+    [JsonPropertyName("identities")] public required ICollection<UserIdentityModel> Identities { get; init; }
 }
 
 public record UserProfileModel
@@ -18,12 +18,12 @@ public record UserProfileModel
 
 public record UserIdentityModel
 {
-    [JsonPropertyName("type")] public string? Type { get; init; }
+    [JsonPropertyName("type")] public required string Type { get; init; }
 
-    [JsonPropertyName("details")] public UserIdentityDetailsModel? Details { get; init; }
+    [JsonPropertyName("details")] public required UserIdentityDetailsModel Details { get; init; }
 }
 
 public record UserIdentityDetailsModel
 {
-    [JsonPropertyName("email")] public string? Email { get; init; }
+    [JsonPropertyName("email")] public required string Email { get; init; }
 }

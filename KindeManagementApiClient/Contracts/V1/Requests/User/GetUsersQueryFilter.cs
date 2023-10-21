@@ -3,7 +3,7 @@ using Refit;
 
 namespace KindeManagementApiClient.Contracts.V1.Requests.User;
 
-public record GetUsersRequest
+public record GetUsersQueryFilter
 {
     [AliasAs("user_id")] public string? UserId { get; init; }
 
