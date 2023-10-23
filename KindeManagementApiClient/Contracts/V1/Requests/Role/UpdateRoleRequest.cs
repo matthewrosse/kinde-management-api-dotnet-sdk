@@ -6,9 +6,13 @@ public record UpdateRoleRequest
 {
     [JsonPropertyName("name")] public required string Name { get; init; }
 
-    [JsonPropertyName("description")] public string? Description { get; init; }
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    [JsonPropertyName("description")]
+    public string? Description { get; init; }
 
     [JsonPropertyName("key")] public required string Key { get; init; }
 
-    [JsonPropertyName("is_default_role")] public bool? IsDefaultRole { get; init; }
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    [JsonPropertyName("is_default_role")]
+    public bool? IsDefaultRole { get; init; }
 }

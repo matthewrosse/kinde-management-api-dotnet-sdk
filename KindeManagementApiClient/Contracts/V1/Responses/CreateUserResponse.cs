@@ -8,5 +8,5 @@ public record CreateUserResponse(
     [property: JsonPropertyName("created")]
     bool Created,
     [property: JsonPropertyName("identities")]
-    IReadOnlyCollection<UserIdentity> Identities
+    IReadOnlyCollection<CreatedUserIdentity> Identities
 );

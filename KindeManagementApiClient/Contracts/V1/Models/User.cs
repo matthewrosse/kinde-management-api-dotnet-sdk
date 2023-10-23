@@ -23,5 +23,9 @@ public record User(
     [property: JsonPropertyName("last_signed_in")]
     string? LastSignedIn,
     [property: JsonPropertyName("created_on")]
-    string? CreatedOn
+    string? CreatedOn,
+    [property: JsonPropertyName("organizations")]
+    IReadOnlyCollection<string>? OrganizationIds,
+    [property: JsonPropertyName("identities")]
+    IReadOnlyCollection<UserIdentity>? Identities
 );

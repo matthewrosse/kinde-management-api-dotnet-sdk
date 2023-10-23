@@ -1,4 +1,5 @@
 using System.Text.Json.Serialization;
+using KindeManagementApiClient.Contracts.V1.Models;
 
 namespace KindeManagementApiClient.Contracts.V1.Responses;
 
@@ -9,13 +10,5 @@ public record GetPermissionsResponse(
     [property: JsonPropertyName("next_token")]
     string? NextToken,
     [property: JsonPropertyName("permissions")]
-    IReadOnlyCollection<GetPermissionsResponseInnerPermission>? Permissions
-);
-
-public record GetPermissionsResponseInnerPermission(
-    [property: JsonPropertyName("id")] string Id,
-    [property: JsonPropertyName("key")] string Key,
-    [property: JsonPropertyName("name")] string Name,
-    [property: JsonPropertyName("description")]
-    string Description
+    IReadOnlyCollection<Permission>? Permissions
 );

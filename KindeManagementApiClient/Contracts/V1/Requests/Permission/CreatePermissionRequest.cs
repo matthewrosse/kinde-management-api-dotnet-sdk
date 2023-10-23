@@ -4,9 +4,11 @@ namespace KindeManagementApiClient.Contracts.V1.Requests.Permission;
 
 public record CreatePermissionRequest
 {
-    [JsonPropertyName("name")] public string? Name { get; init; }
+    [JsonPropertyName("name")] public required string Name { get; init; }
 
-    [JsonPropertyName("description")] public string? Description { get; init; }
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    [JsonPropertyName("description")]
+    public string? Description { get; init; }
 
-    [JsonPropertyName("key")] public string? Key { get; init; }
+    [JsonPropertyName("key")] public required string Key { get; init; }
 }

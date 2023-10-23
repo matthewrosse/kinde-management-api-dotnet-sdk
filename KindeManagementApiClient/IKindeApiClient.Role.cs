@@ -19,8 +19,8 @@ public partial interface IKindeApiClient
     /// Gets the role's permissions.
     /// </summary>
     /// <param name="roleId">Role's identifier.</param>
-    /// <param name="queryFilter">An instance of <see cref="GetRolePermissionsResponse"/> that specifies additional query params.</param>
-    /// <returns>An instance of <see cref="ApiResponse{T}"/> of <see cref="GetRolePermissionsResponse"/>.</returns>
+    /// <param name="queryFilter">An instance of <see cref="GetRolePermissionsQueryFilter"/> that specifies additional query params.</param>
+    /// <returns>An instance of <see cref="ApiResponse{T}"/> of <see cref="IReadOnlyCollection{T}"/> of <see cref="GetRolePermissionResponse"/>.</returns>
     [Get(KindeApiRoutes.V1.Roles.GetPermissions)]
     Task<ApiResponse<GetRolePermissionsResponse>> GetRolePermissions(
         string roleId,
