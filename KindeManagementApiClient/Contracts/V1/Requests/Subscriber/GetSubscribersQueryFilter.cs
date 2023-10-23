@@ -3,7 +3,7 @@ using Refit;
 
 namespace KindeManagementApiClient.Contracts.V1.Requests.Subscriber;
 
-public record GetSubscribersRequest
+public record GetSubscribersQueryFilter
 {
     [AliasAs("sort")] public SubscriberSortingMethod? SortingMethod { get; init; }
 

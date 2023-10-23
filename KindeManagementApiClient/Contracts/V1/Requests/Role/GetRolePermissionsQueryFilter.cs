@@ -3,9 +3,9 @@ using Refit;
 
 namespace KindeManagementApiClient.Contracts.V1.Requests.Role;
 
-public record GetRolesRequest
+public record GetRolePermissionsQueryFilter
 {
-    [AliasAs("sort")] public RoleSortingMethod? SortingMethod { get; init; }
+    [AliasAs("sort")] public PermissionSortingMethod? SortingMethod { get; init; }
 
     [AliasAs("page_size")] public int? PageSize { get; init; }
 

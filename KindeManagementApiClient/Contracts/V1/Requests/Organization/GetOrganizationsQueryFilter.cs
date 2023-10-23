@@ -1,11 +1,11 @@
 using KindeManagementApiClient.Contracts.V1.QueryParams;
 using Refit;
 
-namespace KindeManagementApiClient.Contracts.V1.Requests.Permission;
+namespace KindeManagementApiClient.Contracts.V1.Requests.Organization;
 
-public record GetPermissionsRequest
+public record GetOrganizationsQueryFilter
 {
-    [AliasAs("sort")] public PermissionSortingMethod? SortingMethod { get; init; }
+    [AliasAs("sort")] public OrganizationSortingMethod? SortingMethod { get; init; }
 
     [AliasAs("page_size")] public int? PageSize { get; init; }
 

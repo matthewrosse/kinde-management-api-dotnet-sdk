@@ -14,13 +14,13 @@ public partial interface IKindeApiClient
     /// <summary>
     /// Gets the user with specified id.
     /// </summary>
-    /// <param name="userId">User identifier</param>
+    /// <param name="userId">User's identifier</param>
     /// <returns>An instance of <see cref="ApiResponse{T}" /> of <see cref="User"/>.</returns>
     [Get(KindeApiRoutes.V1.Users.Get)]
     Task<ApiResponse<User>> GetUser([Query, AliasAs("id")] string userId);
 
     /// <summary>
-    /// Gets a collection of users.
+    /// Gets a collection of users with a default page size of 10.
     /// </summary>
     /// <param name="queryFilter">The <see cref="GetUsersQueryFilter"/> instance that represents additional query params.</param>
     /// <returns>An instance of <see cref="ApiResponse{T}"/> of <see cref="UsersResponse"/>.</returns>

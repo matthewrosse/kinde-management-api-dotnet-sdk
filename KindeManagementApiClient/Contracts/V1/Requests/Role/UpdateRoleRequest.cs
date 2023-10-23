@@ -4,8 +4,6 @@ namespace KindeManagementApiClient.Contracts.V1.Requests.Role;
 
 public record UpdateRoleRequest
 {
-    public required string RoleId { get; init; }
-
     [JsonPropertyName("name")] public required string Name { get; init; }
 
     [JsonPropertyName("description")] public string? Description { get; init; }

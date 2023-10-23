@@ -4,8 +4,6 @@ namespace KindeManagementApiClient.Contracts.V1.Requests.Organization;
 
 public record UpdateOrganizationRequest
 {
-    public required string OrganizationCode { get; init; }
-
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     [JsonPropertyName("name")]
     public string? Name { get; init; }
