@@ -1,5 +1,5 @@
-# Kinde management API SDK for .NET
-===================================
+Kinde management API SDK for .NET
+=================================
 
 A convenient interface for consuming the Kinde Management API
 that manages the access token refresh flow
