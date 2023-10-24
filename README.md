@@ -46,8 +46,24 @@ Before you start using the library you need to:
 }
 ```
 
+> **Warning**
+> You should never expose your `ClientSecret` in the appsettings.json. In development
+> you can use dotnet secrets like the example below. In production you should use something like
+> Azure Key Vault.
+
+```shell
+# if you haven't already initialized the user secrets:
+dotnet user-secrets init --project <your-project-in-solution>
+
+# make sure you don't make a typo
+dotnet user-secrets set "KindeApiClientOptions:ClientSecret" "<your-secret>" --project <your-project-in-solution>
+
+# see all secrets:
+dotnet user-secrets list --project <your-project-in-solution>
+```
+
 > **Important**
-> You must turn on the Kinde Management API in the settings of your Machine to machine application!!!
+> You must turn on the Kinde Management API in the settings of your Machine to machine application!
 > Otherwise, your machine to machine app won't be whitelisted to get the OAuth2 token.
 
 These settings are going to be validated
