@@ -10,6 +10,11 @@ and transient network errors for you.
 > This library is still in development, so breaking changes are possible, althought I don't expect much to change in the
 > interface.
 
+This SDK supports the following platforms:
+
+* .NET 7
+* .NET 8
+
 ### Installation
 
 You should install [KindeManagementApiClient with NuGet](https://nuget.org/packages/KindeManagementApiClient)
