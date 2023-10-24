@@ -1,123 +1,220 @@
+using KindeManagementApiClient.Constants;
 using KindeManagementApiClient.Contracts.V1.Models;
-using KindeManagementApiClient.Contracts.V1.Requests;
+using KindeManagementApiClient.Contracts.V1.Requests.Organization;
 using KindeManagementApiClient.Contracts.V1.Responses;
-using KindeManagementApiClient.QueryParams;
 using Refit;
 
 namespace KindeManagementApiClient;
 
 public partial interface IKindeApiClient
 {
-    [Get("/api/v1/organization")]
-    Task<Organization> GetOrganization([AliasAs("code")] string code);
+    /// <summary>
+    /// Gets an organization with the specified organization's code.
+    /// </summary>
+    /// <param name="code">Organization's code.</param>
+    /// <returns>An instance of <see cref="ApiResponse{T}"/> of <see cref="Organization"/>.</returns>
+    [Get(KindeApiRoutes.V1.Organizations.Get)]
+    Task<ApiResponse<Organization>> GetOrganization([Query] string code);
 
-    [Get("/api/v1/organizations")]
-    Task<GetOrganizationsResponse> GetOrganizations(
-        [AliasAs("sort")] OrganizationSortingMethod? sortingMethod = null,
-        [AliasAs("page_size")] int? pageSize = null,
-        [AliasAs("next_token")] string? nextToken = null
+    /// <summary>
+    /// Gets a collection of organizations with default page size of 10.
+    /// </summary>
+    /// <param name="queryFilter">An instance of <see cref="GetOrganizationsQueryFilter"/> that specifies additional query params.</param>
+    /// <returns>An instance of <see cref="ApiResponse{T}"/> of <see cref="GetOrganizationsResponse"/>.</returns>
+    [Get(KindeApiRoutes.V1.Organizations.GetMany)]
+    Task<ApiResponse<GetOrganizationsResponse>> GetOrganizations(
+        [Query] GetOrganizationsQueryFilter? queryFilter = default
     );
 
-    [Post("/api/v1/organization")]
-    Task<CreateOrganizationResponse> CreateOrganization([Body] CreateOrganizationRequest request);
+    /// <summary>
+    /// Creates a new organization.
+    /// </summary>
+    /// <param name="request">An instance of <see cref="CreateOrganizationRequest"/> that specifies the organization's properties.</param>
+    /// <returns>An instance of <see cref="ApiResponse{T}"/> of <see cref="CreateOrganizationResponse"/>.</returns>
+    [Post(KindeApiRoutes.V1.Organizations.Create)]
+    Task<ApiResponse<CreateOrganizationResponse>> CreateOrganization([Body] CreateOrganizationRequest request);
 
-    [Patch("/api/v1/organization/{org_code}")]
-    Task<SuccessResponse> UpdateOrganization(
-        [AliasAs("org_code")] string organizationCode,
-        [Body] CreateOrganizationRequest request
+    /// <summary>
+    /// Updates an organization with the specified organization's code.
+    /// </summary>
+    /// <param name="organizationCode">Organization's code.</param>
+    /// <param name="request">An instance of <see cref="UpdateOrganizationRequest"/> that specifies organization's properties to update.</param>
+    /// <returns>An instance of <see cref="ApiResponse{T}"/> of <see cref="SuccessResponse"/>.</returns>
+    [Patch(KindeApiRoutes.V1.Organizations.Update)]
+    Task<ApiResponse<SuccessResponse>> UpdateOrganization(
+        string organizationCode,
+        [Body] UpdateOrganizationRequest request
     );
 
-    [Delete("/api/v1/organization/{org_code}")]
-    Task DeleteOrganization([AliasAs("org_code")] string organizationCode);
+    /// <summary>
+    /// Deletes an organization with the specified organization's code.
+    /// </summary>
+    /// <param name="organizationCode">Organization's code.</param>
+    /// <returns>An instance of <see cref="IApiResponse{T}"/>.</returns>
+    [Delete(KindeApiRoutes.V1.Organizations.Delete)]
+    Task<IApiResponse> DeleteOrganization(string organizationCode);
 
-    [Get("/api/v1/organizations/{org_code}/users")]
-    Task<GetOrganizationUsersResponse> GetUsersInOrganization(
-        [AliasAs("org_code")] string organizationCode,
-        [AliasAs("sort")] UserSortingMethod? sortingMethod = null,
-        [AliasAs("page_size")] int? pageSize = null,
-        [AliasAs("next_token")] string? nextToken = null,
-        [Query(CollectionFormat.Csv)] ICollection<string>? permissions = null,
-        [Query(CollectionFormat.Csv)] ICollection<string>? roles = null
+    /// <summary>
+    /// Gets the organization's users.
+    /// </summary>
+    /// <param name="organizationCode">Organization's code.</param>
+    /// <param name="queryFilter">An instance of <see cref="GetOrganizationUsersQueryFilter"/> that specifies additional query params.</param>
+    /// <returns>An instance of <see cref="ApiResponse{T}"/> of <see cref="GetOrganizationUsersResponse"/>.</returns>
+    [Get(KindeApiRoutes.V1.Organizations.GetUsers)]
+    Task<ApiResponse<GetOrganizationUsersResponse>> GetOrganizationUsers(
+        string organizationCode,
+        GetOrganizationUsersQueryFilter? queryFilter = default
     );
 
-    [Post("/api/v1/organizations/{org_code}/users")]
-    Task<AddOrganizationUsersResponse> AddUsersToOrganization(
-        [AliasAs("org_code")] string organizationCode,
-        [Body] AddUserToOrganizationRequest request
+    /// <summary>
+    /// Add users to an organization with specified organization's code.
+    /// </summary>
+    /// <param name="organizationCode">Organization's code.</param>
+    /// <param name="request">An instance of <see cref="AddOrganizationUsersRequest"/>.</param>
+    /// <returns>An instance of <see cref="ApiResponse{T}"/> of <see cref="AddOrganizationUsersResponse"/>.</returns>
+    [Post(KindeApiRoutes.V1.Organizations.AddUsers)]
+    Task<ApiResponse<AddOrganizationUsersResponse>> AddOrganizationUsers(
+        string organizationCode,
+        [Body] AddOrganizationUsersRequest request
     );
 
-    [Patch("/api/v1/organizations/{org_code}/users")]
-    Task<UpdateOrganizationUsersResponse> UpdateUsersInOrganization(
-        [AliasAs("org_code")] string organizationCode,
-        [Body] UpdateUsersInOrganizationRequest request
+    /// <summary>
+    /// Updates users in the organization with the specified organization's code.
+    /// </summary>
+    /// <param name="organizationCode">Organization's code.</param>
+    /// <param name="request">An instance of <see cref="UpdateOrganizationUsersRequest"/>.</param>
+    /// <returns>An instance of <see cref="ApiResponse{T}"/> of <see cref="UpdateOrganizationUsersResponse"/>.</returns>
+    [Patch(KindeApiRoutes.V1.Organizations.UpdateUsers)]
+    Task<ApiResponse<UpdateOrganizationUsersResponse>> UpdateOrganizationUsers(
+        string organizationCode,
+        [Body] UpdateOrganizationUsersRequest request
     );
 
-    [Get("/api/v1/organizations/{org_code}/users/{user_id}/roles")]
-    Task<GetOrganizationUserRolesResponse> GetUserRolesInOrganization(
-        [AliasAs("org_code")] string organizationCode,
-        [AliasAs("user_id")] string userId
+    /// <summary>
+    /// Gets the organization user's roles.
+    /// </summary>
+    /// <param name="organizationCode">Organization's code.</param>
+    /// <param name="userId">User's identifier.</param>
+    /// <returns>An instance of <see cref="ApiResponse{T}"/> of <see cref="GetOrganizationUserRolesResponse"/>.</returns>
+    [Get(KindeApiRoutes.V1.Organizations.GetUserRoles)]
+    Task<ApiResponse<GetOrganizationUserRolesResponse>> GetOrganizationUserRoles(
+        string organizationCode,
+        string userId
     );
 
-    [Post("/api/v1/organizations/{org_code}/users/{user_id}/roles")]
-    Task<SuccessResponse> AddRoleToUserInOrganization(
-        [AliasAs("org_code")] string organizationCode,
-        [AliasAs("user_id")] string userId,
-        [Body] AddRoleToUserInOrganizationRequest request
+    /// <summary>
+    /// Add a role to the organization user.
+    /// </summary>
+    /// <param name="organizationCode">Organization's code.</param>
+    /// <param name="userId">User's identifier.</param>
+    /// <param name="request">An instance of <see cref="AddOrganizationUserRoleRequest"/>.</param>
+    /// <returns>An instance of <see cref="ApiResponse{T}"/> of <see cref="SuccessResponse"/>.</returns>
+    [Post(KindeApiRoutes.V1.Organizations.AddUserRole)]
+    Task<ApiResponse<SuccessResponse>> AddOrganizationUserRole(
+        string organizationCode,
+        string userId,
+        [Body] AddOrganizationUserRoleRequest request
     );
 
-    [Delete("/api/v1/organizations/{org_code}/users/{user_id}/roles/{role_id}")]
-    Task<SuccessResponse> DeleteRoleFromUserInOrganization(
-        [AliasAs("org_code")] string organizationCode,
-        [AliasAs("user_id")] string userId,
-        [AliasAs("role_id")] string roleId
+    /// <summary>
+    /// Deletes the organization user's role.
+    /// </summary>
+    /// <param name="organizationCode">Organization's code.</param>
+    /// <param name="userId">User's identifier.</param>
+    /// <param name="roleId">Role's identifier.</param>
+    /// <returns>An instance of <see cref="ApiResponse{T}"/> of <see cref="SuccessResponse"/>.</returns>
+    [Delete(KindeApiRoutes.V1.Organizations.DeleteUserRole)]
+    Task<ApiResponse<SuccessResponse>>
+        DeleteOrganizationUserRole(string organizationCode, string userId, string roleId);
+
+    /// <summary>
+    /// Gets organization user's permissions.
+    /// </summary>
+    /// <param name="organizationCode">Organization's code.</param>
+    /// <param name="userId">User's identifier.</param>
+    /// <returns>An instance of <see cref="ApiResponse{T}"/> of <see cref="GetOrganizationUserPermissionsResponse"/>.</returns>
+    [Get(KindeApiRoutes.V1.Organizations.GetUserPermissions)]
+    Task<ApiResponse<GetOrganizationUserPermissionsResponse>> GetOrganizationUserPermissions(
+        string organizationCode,
+        string userId
     );
 
-    [Get("/api/v1/organizations/{org_code}/users/{user_id}/permissions")]
-    Task<GetOrganizationUserPermissionsResponse> GetUserPermissionsInOrganization(
-        [AliasAs("org_code")] string organizationCode,
-        [AliasAs("user_id")] string userId
+    /// <summary>
+    /// Adds permissions to the organization user.
+    /// </summary>
+    /// <param name="organizationCode">Organization's code.</param>
+    /// <param name="userId">User's identifier.</param>
+    /// <param name="request">An instance of <see cref="AddOrganizationUserPermissionRequest"/>.</param>
+    /// <returns>An instance of <see cref="ApiResponse{T}"/> of <see cref="SuccessResponse"/>.</returns>
+    [Post(KindeApiRoutes.V1.Organizations.AddUserPermission)]
+    Task<ApiResponse<SuccessResponse>> AddOrganizationUserPermissions(
+        string organizationCode,
+        string userId,
+        [Body] AddOrganizationUserPermissionRequest request
     );
 
-    [Post("/api/v1/organizations/{org_code}/users/{user_id}/permissions")]
-    Task<SuccessResponse> AddPermissionsToUserInOrganization(
-        [AliasAs("org_code")] string organizationCode,
-        [AliasAs("user_id")] string userId,
-        [Body] AddPermissionToUserInOrganizationRequest request
+    /// <summary>
+    /// Deletes organization user's permission.
+    /// </summary>
+    /// <param name="organizationCode">Organization's code.</param>
+    /// <param name="userId">User's identifier.</param>
+    /// <param name="permissionId">Permission's identifier.</param>
+    /// <returns>An instance of <see cref="ApiResponse{T}"/> of <see cref="SuccessResponse"/>.</returns>
+    [Delete(KindeApiRoutes.V1.Organizations.DeleteUserPermission)]
+    Task<ApiResponse<SuccessResponse>> DeleteOrganizationUserPermission(
+        string organizationCode,
+        string userId,
+        string permissionId
     );
 
-    [Delete("/api/v1/organizations/{org_code}/users/{user_id}/permissions/{permission_id}")]
-    Task<SuccessResponse> DeletePermissionFromUserInOrganization(
-        [AliasAs("org_code")] string organizationCode,
-        [AliasAs("user_id")] string userId,
-        [AliasAs("permission_id")] string permissionId
+    /// <summary>
+    /// Deletes organization user.
+    /// </summary>
+    /// <param name="organizationCode">Organization's code.</param>
+    /// <param name="userId">User's identifier.</param>
+    /// <returns>An instance of <see cref="ApiResponse{T}"/> of <see cref="SuccessResponse"/>.</returns>
+    [Delete(KindeApiRoutes.V1.Organizations.DeleteUser)]
+    Task<ApiResponse<SuccessResponse>> DeleteOrganizationUser(string organizationCode, string userId);
+
+    /// <summary>
+    /// Gets organization's feature flags.
+    /// </summary>
+    /// <param name="organizationCode">Organization's code.</param>
+    /// <returns>An instance of <see cref="ApiResponse{T}"/> of <see cref="GetOrganizationFeatureFlagsResponse"/>.</returns>
+    [Get(KindeApiRoutes.V1.Organizations.GetFeatureFlags)]
+    Task<ApiResponse<GetOrganizationFeatureFlagsResponse>> GetOrganizationFeatureFlags(string organizationCode);
+
+    /// <summary>
+    /// Deletes organization's feature flags overrides.
+    /// </summary>
+    /// <param name="organizationCode">Organization's code.</param>
+    /// <returns>An instance of <see cref="ApiResponse{T}"/> of <see cref="SuccessResponse"/>.</returns>
+    [Delete(KindeApiRoutes.V1.Organizations.DeleteFeatureFlagsOverrides)]
+    Task<ApiResponse<SuccessResponse>> DeleteOrganizationFeatureFlagsOverrides(string organizationCode);
+
+    /// <summary>
+    /// Deletes organization's feature flags override with specified key.
+    /// </summary>
+    /// <param name="organizationCode">Organization's code.</param>
+    /// <param name="featureFlagKey">Feature flag's key.</param>
+    /// <returns>An instance of <see cref="ApiResponse{T}"/> of <see cref="SuccessResponse"/>.</returns>
+    [Delete(KindeApiRoutes.V1.Organizations.DeleteFeatureFlagsOverride)]
+    Task<ApiResponse<SuccessResponse>> DeleteOrganizationFeatureFlagsOverride(
+        string organizationCode,
+        string featureFlagKey
     );
 
-    [Delete("/api/v1/organizations/{org_code}/users/{user_id}")]
-    Task<SuccessResponse> DeleteUserFromOrganization(
-        [AliasAs("org_code")] string organizationCode,
-        [AliasAs("user_id")] string userId
-    );
-
-    [Get("/api/v1/organizations/{org_code}/feature_flags")]
-    Task<GetOrganizationFeatureFlagsResponse> GetOrganizationFeatureFlags(
-        [AliasAs("org_code")] string organizationCode
-    );
-
-    [Delete("/api/v1/organizations/{org_code}/feature_flags")]
-    Task<SuccessResponse> DeleteOrganizationFeatureFlagsOverrides(
-        [AliasAs("org_code")] string organizationCode
-    );
-
-    [Delete("/api/v1/organizations/{org_code}/feature_flags/{feature_flag_key}")]
-    Task<SuccessResponse> DeleteOrganizationFeatureFlagsOverride(
-        [AliasAs("org_code")] string organizationCode,
-        [AliasAs("feature_flag_key")] string featureFlagKey
-    );
-
-    [Patch("/api/v1/organizations/{org_code}/feature_flags/{feature_flag_key}")]
-    Task<SuccessResponse> UpdateOrganizationFeatureFlagsOverride(
-        [AliasAs("org_code")] string organizationCode,
-        [AliasAs("feature_flag_key")] string featureFlagKey,
-        [AliasAs("value")] string value
+    /// <summary>
+    /// Updates the organization's feature flags override with specified key.
+    /// </summary>
+    /// <param name="organizationCode">Organization's code.</param>
+    /// <param name="featureFlagKey">Feature flag's key.</param>
+    /// <param name="request">An instance of <see cref="UpdateOrganizationFeatureFlagsOverrideRequest"/>.</param>
+    /// <returns>An instance of <see cref="ApiResponse{T}"/> of <see cref="SuccessResponse"/>.</returns>
+    [Patch(KindeApiRoutes.V1.Organizations.UpdateFeatureFlagsOverride)]
+    Task<ApiResponse<SuccessResponse>> UpdateOrganizationFeatureFlagsOverride(
+        string organizationCode,
+        string featureFlagKey,
+        UpdateOrganizationFeatureFlagsOverrideRequest request
     );
 }
