@@ -1,11 +1,14 @@
 Kinde management API SDK for .NET
 =================================
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/matthewrosse/kinde-management-api-dotnet-sdk/blob/main/LICENSE)
 
 A convenient interface for consuming the Kinde Management API
 that manages the access token refresh flow
 and transient network errors for you.
 
-* Note: this library is still in development, so breaking changes are possible.
+> **Note**
+> This library is still in development, so breaking changes are possible, althought I don't expect much to change in the
+> interface.
 
 ### Installation
 
