@@ -8,6 +8,9 @@ using Microsoft.Extensions.Options;
 
 namespace KindeManagementApiClient.Implementations;
 
+/// <summary>
+/// The default implementation of <see cref="ITokenFetcher"/>
+/// </summary>
 internal sealed class TokenFetcher : ITokenFetcher
 {
     private readonly HttpClient _httpClient;
@@ -25,6 +28,12 @@ internal sealed class TokenFetcher : ITokenFetcher
         _logger = logger;
     }
 
+    /// <summary>
+    /// Fetches an access token.
+    /// </summary>
+    /// <param name="cancellationToken">An instance of <see cref="CancellationToken"/>.</param>
+    /// <exception cref="HttpRequestException">When the internal client was unable to obtain the access token.</exception>
+    /// <returns>The access token.</returns>
     public async Task<string> FetchAccessTokenAsync(CancellationToken cancellationToken = default)
     {
         var requestContent = CreateAccessTokenRequestContent();

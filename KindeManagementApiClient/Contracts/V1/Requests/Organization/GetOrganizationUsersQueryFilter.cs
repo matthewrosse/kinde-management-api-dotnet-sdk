@@ -3,6 +3,9 @@ using Refit;
 
 namespace KindeManagementApiClient.Contracts.V1.Requests.Organization;
 
+/// <summary>
+/// The query filter for getting a collection of organization users that adds additional query parameters.
+/// </summary>
 public record GetOrganizationUsersQueryFilter
 {
     [AliasAs("sort")] public UserSortingMethod? SortingMethod { get; init; }

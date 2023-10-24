@@ -3,6 +3,10 @@ using System.Text.Json.Serialization;
 
 namespace KindeManagementApiClient.Contracts.V1.Requests.Organization;
 
+/// <summary>
+/// A request for updating organization users.
+/// </summary>
+/// <param name="UpdateUserModels"></param>
 public record UpdateOrganizationUsersRequest(
     [property: JsonPropertyName("users")] ICollection<UpdateOrganizationUserModel> UpdateUserModels
 );

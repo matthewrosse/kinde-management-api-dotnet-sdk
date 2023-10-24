@@ -2,6 +2,9 @@ using System.Text.Json.Serialization;
 
 namespace KindeManagementApiClient.Contracts.V1.Requests.Organization;
 
+/// <summary>
+/// A request for updating an organization.
+/// </summary>
 public record UpdateOrganizationRequest
 {
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]

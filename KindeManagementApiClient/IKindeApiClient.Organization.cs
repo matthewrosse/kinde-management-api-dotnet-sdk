@@ -144,13 +144,13 @@ public partial interface IKindeApiClient
     /// </summary>
     /// <param name="organizationCode">Organization's code.</param>
     /// <param name="userId">User's identifier.</param>
-    /// <param name="request">An instance of <see cref="AddOrganizationUserPermissionsRequest"/>.</param>
+    /// <param name="request">An instance of <see cref="AddOrganizationUserPermissionRequest"/>.</param>
     /// <returns>An instance of <see cref="ApiResponse{T}"/> of <see cref="SuccessResponse"/>.</returns>
     [Post(KindeApiRoutes.V1.Organizations.AddUserPermission)]
     Task<ApiResponse<SuccessResponse>> AddOrganizationUserPermissions(
         string organizationCode,
         string userId,
-        [Body] AddOrganizationUserPermissionsRequest request
+        [Body] AddOrganizationUserPermissionRequest request
     );
 
     /// <summary>

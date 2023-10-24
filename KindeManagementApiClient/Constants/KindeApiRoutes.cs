@@ -1,11 +1,17 @@
 namespace KindeManagementApiClient.Constants;
 
+/// <summary>
+/// The routes of kinde's management api.
+/// </summary>
 internal static class KindeApiRoutes
 {
     internal const string GetOAuth2AccessToken = "/oauth2/token";
 
     internal static class V1
     {
+        /// <summary>
+        /// User routes.
+        /// </summary>
         internal static class Users
         {
             internal const string Get = "/api/v1/user";
@@ -16,6 +22,9 @@ internal static class KindeApiRoutes
             internal const string Delete = "/api/v1/user";
         }
 
+        /// <summary>
+        /// Subscriber routes.
+        /// </summary>
         internal static class Subscribers
         {
             internal const string Get = "/api/v1/subscribers/{subscriberId}";
@@ -23,6 +32,9 @@ internal static class KindeApiRoutes
             internal const string Create = "/api/v1/subscribers";
         }
 
+        /// <summary>
+        /// Role routes.
+        /// </summary>
         internal static class Roles
         {
             internal const string GetMany = "/api/v1/roles";
@@ -37,6 +49,9 @@ internal static class KindeApiRoutes
             internal const string Delete = "/api/v1/roles/{roleId}";
         }
 
+        /// <summary>
+        /// Permission routes.
+        /// </summary>
         internal static class Permissions
         {
             internal const string GetMany = "/api/v1/permissions";
@@ -45,6 +60,9 @@ internal static class KindeApiRoutes
             internal const string Delete = "/api/v1/permissions/{permissionId}";
         }
 
+        /// <summary>
+        /// Organization routes.
+        /// </summary>
         internal static class Organizations
         {
             internal const string Get = "/api/v1/organization";

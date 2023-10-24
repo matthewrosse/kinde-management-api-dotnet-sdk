@@ -4,6 +4,10 @@ using Microsoft.Extensions.Caching.Memory;
 
 namespace KindeManagementApiClient.Implementations;
 
+/// <summary>
+/// The implementation of <see cref="IAuthTokenStore"/> that uses <see cref="IMemoryCache"/>
+/// as the fast token lookup and refreshed the access token on 401 unauthorized.
+/// </summary>
 internal sealed class AuthTokenStore : IAuthTokenStore
 {
     private readonly IMemoryCache _memoryCache;
@@ -18,7 +22,12 @@ internal sealed class AuthTokenStore : IAuthTokenStore
         _tokenFetcher = tokenFetcher;
     }
 
-    public async Task<string> GetAccessTokenAsync(CancellationToken cancellationToken)
+    /// <summary>
+    /// Gets the access token.
+    /// </summary>
+    /// <param name="cancellationToken">An instance of <see cref="CancellationToken"/>.</param>
+    /// <returns>The access token for Kinde Management API.</returns>
+    public async Task<string> GetAccessTokenAsync(CancellationToken cancellationToken = default)
     {
         if (_memoryCache.TryGetValue(KindeApiClientConstants.AccessTokenCacheKey, out string? cachedAccessToken)
             &&
@@ -34,7 +43,12 @@ internal sealed class AuthTokenStore : IAuthTokenStore
         return newAccessToken;
     }
 
-    public async Task<string> GetRefreshedAccessTokenAsync(CancellationToken cancellationToken)
+    /// <summary>
+    /// Gets the refreshed access token.
+    /// </summary>
+    /// <param name="cancellationToken">An instance of <see cref="CancellationToken"/>.</param>
+    /// <returns>A refreshed access token.</returns>
+    public async Task<string> GetRefreshedAccessTokenAsync(CancellationToken cancellationToken = default)
     {
         var newAccessToken = await _tokenFetcher.FetchAccessTokenAsync(cancellationToken);
 

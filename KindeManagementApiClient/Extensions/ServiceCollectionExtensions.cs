@@ -21,6 +21,11 @@ public static class ServiceCollectionExtensions
         .OrResult(response => response.StatusCode == HttpStatusCode.TooManyRequests)
         .WaitAndRetryAsync(3, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)));
 
+    /// <summary>
+    /// Adds the necessary services and configuration for consuming the Kinde management API.
+    /// </summary>
+    /// <param name="services">An instance of <see cref="IServiceCollection"/>.</param>
+    /// <returns>An instance of <see cref="IServiceCollection"/>.</returns>
     public static IServiceCollection AddKindeApiClient(
         this IServiceCollection services
     )

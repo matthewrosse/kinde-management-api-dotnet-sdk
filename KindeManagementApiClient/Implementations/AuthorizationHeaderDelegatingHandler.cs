@@ -8,6 +8,10 @@ using Polly;
 
 namespace KindeManagementApiClient.Implementations;
 
+/// <summary>
+/// Delegating handler that sets the authorization header
+/// before each request and handles unauthorized responses.
+/// </summary>
 public sealed class AuthorizationHeaderDelegatingHandler : DelegatingHandler
 {
     private readonly IAuthTokenStore _authTokenStore;
