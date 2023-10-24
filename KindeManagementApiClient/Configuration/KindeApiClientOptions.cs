@@ -10,7 +10,7 @@ public sealed class KindeApiClientOptions
     /// <summary>
     /// The section name for KindeApiClientOptions class.
     /// </summary>
-    internal const string SectionName = nameof(KindeApiClientOptions);
+    public const string SectionName = nameof(KindeApiClientOptions);
 
     /// <summary>
     /// The application's domain.
