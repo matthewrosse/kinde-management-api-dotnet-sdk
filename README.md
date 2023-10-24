@@ -46,6 +46,10 @@ Before you start using the library you need to:
 }
 ```
 
+These settings are going to be validated
+at the application start. If you forget to add them, or for example the domain isn't a valid URL,
+you will get the `Microsoft.Extensions.Options.OptionsValidationException` exception.
+
 > **Warning**
 > You should never expose your `ClientSecret` in the appsettings.json. In development
 > you can use dotnet secrets like the example below. In production you should use something like
@@ -65,10 +69,6 @@ dotnet user-secrets list --project <your-project-in-solution>
 > **Important**
 > You must turn on the Kinde Management API in the settings of your Machine to machine application!
 > Otherwise, your machine to machine app won't be whitelisted to get the OAuth2 token.
-
-These settings are going to be validated
-at the application start. If you forget to add them, or for example the domain isn't a valid URL,
-you will get the `Microsoft.Extensions.Options.OptionsValidationException` exception.
 
 ### Registering with `IServiceCollection`
 
