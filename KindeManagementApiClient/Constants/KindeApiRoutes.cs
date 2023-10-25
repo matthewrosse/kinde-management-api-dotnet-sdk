@@ -42,7 +42,7 @@ internal static class KindeApiRoutes
             internal const string UpdatePermissions = "/api/v1/roles/{roleId}/permissions";
 
             internal const string DeletePermission =
-                "/api/v1/roles/{roleId]/permission/{permissionId}";
+                "/api/v1/roles/{roleId]/permissions/{permissionId}";
 
             internal const string Create = "/api/v1/roles";
             internal const string Update = "/api/v1/role/{roleId}";
