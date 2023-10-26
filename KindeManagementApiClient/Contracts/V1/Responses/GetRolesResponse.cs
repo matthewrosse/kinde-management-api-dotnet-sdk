@@ -3,11 +3,20 @@ using KindeManagementApiClient.Contracts.V1.Models;
 
 namespace KindeManagementApiClient.Contracts.V1.Responses;
 
-public record GetRolesResponse(
-    [property: JsonPropertyName("code")] string Code,
-    [property: JsonPropertyName("message")]
-    string Message,
-    [property: JsonPropertyName("roles")] IReadOnlyCollection<Role>? Roles,
-    [property: JsonPropertyName("next_token")]
-    string? NextToken
-);
+public record GetRolesResponse
+{
+    [JsonIgnore] private readonly List<Role>? _roles;
+
+    [JsonPropertyName("code")] public string Code { get; init; } = default!;
+
+    [JsonPropertyName("message")] public string Message { get; init; } = default!;
+
+    [JsonPropertyName("roles")]
+    public List<Role> Roles
+    {
+        get => _roles ?? new();
+        init => _roles = value;
+    }
+
+    [JsonPropertyName("next_token")] public string? NextToken { get; init; }
+}

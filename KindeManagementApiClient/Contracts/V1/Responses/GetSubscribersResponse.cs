@@ -3,12 +3,20 @@ using KindeManagementApiClient.Contracts.V1.Models;
 
 namespace KindeManagementApiClient.Contracts.V1.Responses;
 
-public record GetSubscribersResponse(
-    [property: JsonPropertyName("code")] string Code,
-    [property: JsonPropertyName("message")]
-    string Message,
-    [property: JsonPropertyName("subscribers")]
-    IReadOnlyCollection<SubscribersSubscriber>? Subscribers,
-    [property: JsonPropertyName("next_token")]
-    string? NextToken
-);
+public record GetSubscribersResponse
+{
+    [JsonIgnore] private readonly List<SubscribersSubscriber>? _subscribers;
+
+    [JsonPropertyName("code")] public string Code { get; init; } = default!;
+
+    [JsonPropertyName("message")] public string Message { get; init; } = default!;
+
+    [JsonPropertyName("subscribers")]
+    public List<SubscribersSubscriber> Subscribers
+    {
+        get => _subscribers ?? new();
+        init => _subscribers = value;
+    }
+
+    [JsonPropertyName("next_token")] public string? NextToken { get; init; }
+}

@@ -2,13 +2,21 @@ using System.Text.Json.Serialization;
 
 namespace KindeManagementApiClient.Contracts.V1.Responses;
 
-public record GetOrganizationFeatureFlagsResponse(
-    [property: JsonPropertyName("code")] string Code,
-    [property: JsonPropertyName("message")]
-    string Message,
-    [property: JsonPropertyName("feature_flags")]
-    IReadOnlyCollection<GetOrganizationFeatureFlagsResponseInnerFeatureFlag>? FeatureFlags
-);
+public record GetOrganizationFeatureFlagsResponse
+{
+    [JsonIgnore] private readonly List<GetOrganizationFeatureFlagsResponseInnerFeatureFlag>? _featureFlags;
+
+    [JsonPropertyName("code")] public string Code { get; init; } = default!;
+
+    [JsonPropertyName("message")] public string Message { get; init; } = default!;
+
+    [JsonPropertyName("feature_flags")]
+    public List<GetOrganizationFeatureFlagsResponseInnerFeatureFlag> FeatureFlags
+    {
+        get => _featureFlags ?? new();
+        init => _featureFlags = value;
+    }
+}
 
 public record GetOrganizationFeatureFlagsResponseInnerFeatureFlag(
     [property: JsonPropertyName("type")] string Type,
