@@ -1,6 +1,7 @@
 using KindeManagementApiClient.Constants;
 using KindeManagementApiClient.Contracts.V1.Requests.Subscriber;
 using KindeManagementApiClient.Contracts.V1.Responses;
+using KindeManagementApiClient.Contracts.V1.Responses.Subscribers;
 using Refit;
 
 namespace KindeManagementApiClient;

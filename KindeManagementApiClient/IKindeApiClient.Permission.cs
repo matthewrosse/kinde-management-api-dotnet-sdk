@@ -1,6 +1,8 @@
 using KindeManagementApiClient.Constants;
 using KindeManagementApiClient.Contracts.V1.Requests.Permission;
 using KindeManagementApiClient.Contracts.V1.Responses;
+using KindeManagementApiClient.Contracts.V1.Responses.Common;
+using KindeManagementApiClient.Contracts.V1.Responses.Permissions;
 using Refit;
 
 namespace KindeManagementApiClient;

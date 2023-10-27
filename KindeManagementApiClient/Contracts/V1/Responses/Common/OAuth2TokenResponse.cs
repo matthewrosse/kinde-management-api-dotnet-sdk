@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace KindeManagementApiClient.Contracts.V1.Responses;
+namespace KindeManagementApiClient.Contracts.V1.Responses.Common;
 
 public record OAuth2TokenResponse(
     [property: JsonPropertyName("access_token")]

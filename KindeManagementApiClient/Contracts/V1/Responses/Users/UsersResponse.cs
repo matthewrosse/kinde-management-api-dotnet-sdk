@@ -1,21 +1,21 @@
 using System.Text.Json.Serialization;
 using KindeManagementApiClient.Contracts.V1.Models;
 
-namespace KindeManagementApiClient.Contracts.V1.Responses;
+namespace KindeManagementApiClient.Contracts.V1.Responses.Users;
 
-public record GetRolesResponse
+public record UsersResponse
 {
-    [JsonIgnore] private readonly List<Role>? _roles;
+    [JsonIgnore] private readonly List<User>? _users;
 
     [JsonPropertyName("code")] public string Code { get; init; } = default!;
 
     [JsonPropertyName("message")] public string Message { get; init; } = default!;
 
-    [JsonPropertyName("roles")]
-    public List<Role> Roles
+    [JsonPropertyName("users")]
+    public List<User> Users
     {
-        get => _roles ?? new();
-        init => _roles = value;
+        get => _users ?? new();
+        init => _users = value;
     }
 
     [JsonPropertyName("next_token")] public string? NextToken { get; init; }

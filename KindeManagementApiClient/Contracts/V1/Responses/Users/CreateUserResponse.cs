@@ -1,7 +1,7 @@
 using System.Text.Json.Serialization;
 using KindeManagementApiClient.Contracts.V1.Models;
 
-namespace KindeManagementApiClient.Contracts.V1.Responses;
+namespace KindeManagementApiClient.Contracts.V1.Responses.Users;
 
 public record CreateUserResponse(
     [property: JsonPropertyName("id")] string Id,

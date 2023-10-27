@@ -2,6 +2,8 @@ using KindeManagementApiClient.Constants;
 using KindeManagementApiClient.Contracts.V1.Models;
 using KindeManagementApiClient.Contracts.V1.Requests.User;
 using KindeManagementApiClient.Contracts.V1.Responses;
+using KindeManagementApiClient.Contracts.V1.Responses.Common;
+using KindeManagementApiClient.Contracts.V1.Responses.Users;
 using Refit;
 
 namespace KindeManagementApiClient;

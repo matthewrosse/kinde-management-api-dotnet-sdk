@@ -17,6 +17,7 @@
         <TargetFrameworks>net7.0;net8.0</TargetFrameworks>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageReleaseNotes>Improved DX by converting null collections from API to empty collections in order to avoid null reference exceptions. You may want to remove redundant null checks after this update.</PackageReleaseNotes>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
     </PropertyGroup>
 
     <ItemGroup>

@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace KindeManagementApiClient.Contracts.V1.Responses;
+namespace KindeManagementApiClient.Contracts.V1.Responses.Organizations;
 
 public record AddOrganizationUsersResponse(
     [property: JsonPropertyName("code")] string Code,
