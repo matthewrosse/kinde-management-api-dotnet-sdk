@@ -4,7 +4,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <Version>0.0.4-alpha</Version>
+        <Version>0.0.5-alpha</Version>
         <Title>KindeManagementApiClient</Title>
         <Authors>matthewrosse</Authors>
         <Description>A simple, convenient interface that allows you to take advantage of Kinde Management API (machine to machine) with automatic access token refreshing and transient fault retries.</Description>
@@ -16,7 +16,7 @@
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <TargetFrameworks>net7.0;net8.0</TargetFrameworks>
         <PackageReadmeFile>README.md</PackageReadmeFile>
-        <PackageReleaseNotes>Improved DX by converting null collections from API to empty collections in order to avoid null reference exceptions. You may want to remove redundant null checks after this update. Adjusted namespaces for response models (breaking change).</PackageReleaseNotes>
+        <PackageReleaseNotes>[BREAKING CHANGES] Fixing get all users User.Email property, due to a breaking change (naming) in the kinde management API.</PackageReleaseNotes>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
     </PropertyGroup>
 
